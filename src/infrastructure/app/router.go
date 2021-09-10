@@ -9,13 +9,13 @@ import (
 	"github.com/Dall06/go-cleanarch-template/src/infrastructure/server"
 
 	uRequest "github.com/Dall06/go-cleanarch-template/src/pkg/user/delivery/handler"
-	uMysql "github.com/Dall06/go-cleanarch-template/src/pkg/user/repository/mysql"
+	"github.com/Dall06/go-cleanarch-template/src/pkg/user/repository/mysqldb"
 	uUCase "github.com/Dall06/go-cleanarch-template/src/pkg/user/usecase"
 	"github.com/gorilla/mux"
 )
 
 func StartRouter(router *mux.Router, conn *sql.DB) {
-	userMysqlRepo := uMysql.MySQLUserRepository(conn)
+	userMysqlRepo := mysqldb.MySQLUserRepository(conn)
 	userInteractor := uUCase.NewUserInteractor(userMysqlRepo)
 	userHandler := uRequest.NewUserHandler(userInteractor)
 
