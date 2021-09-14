@@ -19,8 +19,14 @@ To test app is necessary to create a .env file following .en.example file locate
 go run main.go
 ```
 
-## Contributing
---
+## Changes
+-- No domain layer for DDD good practices
+-- cmd package that contains files that runs the service
+-- domain entity (user) is now inside in its own internal procedures
+-- Jwt claims now inside the JWT file in middleware
+-- src folder now called pkg
+-- queries now located in the repository of the user
+-- Test files ordered
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
