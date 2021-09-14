@@ -9,11 +9,9 @@ based on :
     https://github.com/bmf-san/go-clean-architecture-web-application-boilerplate
 
 
-## Installation
+## Indications
 
-NOT Required. it has autodeploy to docker
-
-To test app is necessary to create a .env file following .en.example file located in root folder
+To test app is necessary to create a .env file following .env.example file located in root folder
 
 ## Usage
 
