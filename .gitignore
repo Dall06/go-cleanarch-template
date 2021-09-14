@@ -1,3 +1,4 @@
 .env
+/log/*.log
 /log/access.log
 /log/error.log
