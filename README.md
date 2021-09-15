@@ -1,4 +1,4 @@
-# Tempalte
+# Template
 No previous versions, still working on this one to reach v1. 
 
 API Service for pssword app mobilde
