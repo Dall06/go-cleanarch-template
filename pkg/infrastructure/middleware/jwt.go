@@ -22,7 +22,7 @@ func NewJWTHandler() *JWTHandler {
 	return &JWTHandler{}
 }
 
-func (j *JWTHandler) SetTokenCookie(w http.ResponseWriter, user internal_user.UserAccount) error {
+func (j *JWTHandler) GenerateToken(user internal_user.UserAccount) (string, time.Time, error) {
 	expirationTime := time.Now().Add(time.Minute * 5)
 	// Setting up token
 	claims := &claims{
@@ -34,6 +34,16 @@ func (j *JWTHandler) SetTokenCookie(w http.ResponseWriter, user internal_user.Us
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	tokenString, err := token.SignedString(jwtKey)
+	// if error when creating token retunr Internal Server Error
+	if err != nil {
+		return "", expirationTime, err
+	}
+
+	return  tokenString, expirationTime, nil
+}
+
+func (j *JWTHandler) SetTokenCookie(w http.ResponseWriter, user internal_user.UserAccount) error {
+	tokenString, expirationTime, err := j.GenerateToken(user)
 	// if error when creating token retunr Internal Server Error
 	if err != nil {
 		return err
